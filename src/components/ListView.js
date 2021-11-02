@@ -1,6 +1,7 @@
 import { Button, Container } from 'react-bootstrap';
 
 const ListView = ({ data, setData }) => {
+
 	const deleteItem = (e) => {
 		e.preventDefault();
 		let id = e.target.name;
@@ -13,11 +14,15 @@ const ListView = ({ data, setData }) => {
 		setData([...data]);
 	};
 
+	console.log(data);
+    
 	return (
 		<>
-		
 			<Container>
-				{data.map((item) => (
+				{ 
+
+				data.length <= 0 ? <h1>Please add Data</h1> :
+				data.map((item) => (
 					<div key={item.id}>
 						<div className="infoCard">
 							<div className="info">
