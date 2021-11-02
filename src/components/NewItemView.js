@@ -2,7 +2,6 @@ import React from 'react';
 import {Container } from 'react-bootstrap';
 import{ useState } from 'react';
 
-
 const NewItemView = ({ setData, data }) => {
 
 	
@@ -12,11 +11,12 @@ const NewItemView = ({ setData, data }) => {
 
 	function handleSubmit(event) {
     event.preventDefault();
-	let newObj={
+	let newObj = {
+		id: Math.random().toString(36).substr(2, 9),
 		name: heroName,
 		creator: creator,
-		url: link
-	}
+		url: link,
+	};
 	setData([...data, newObj]);
   }
 	return (
