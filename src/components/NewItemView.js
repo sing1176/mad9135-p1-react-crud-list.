@@ -1,23 +1,51 @@
 import React from 'react';
-import { Button, Container, } from 'react-bootstrap';
-const NewItemView = () => {
+import {Container } from 'react-bootstrap';
+import{ useState } from 'react';
+
+
+const NewItemView = ({ setData, data }) => {
+
+	
+	const [heroName, setHeroName] = useState('');
+	const [creator, setCreator] = useState('');
+	const [link, setLink] = useState('');
+
+	function handleSubmit(event) {
+    event.preventDefault();
+	let newObj={
+		name: heroName,
+		creator: creator,
+		url: link
+	}
+	setData([...data, newObj]);
+  }
 	return (
 		<>
 			<Container>
-				<div className="form">
-					<label>Superhero Name</label>
-					<input type="text" />
-					<br />
-					<label>Creator</label>
-					<input type="text" />
-					<br />
-					<label>Add link</label>
-					<input type="text" />
-				</div>
-				<div className="formControl">
-					<Button>Save </Button>
-					<Button variant="danger">cancel</Button>
-				</div>
+				<form onSubmit={handleSubmit} className="form">
+					<input
+						value={heroName}
+						onChange={(e) => setHeroName(e.target.value)}
+						placeholder="Superhero Name"
+						type="text"
+						required
+					/>
+					<input
+						value={creator}
+						onChange={(e) => setCreator(e.target.value)}
+						placeholder="Creator"
+						type="text"
+						required
+					/>
+					<input
+						value={link}
+						onChange={(e) => setLink(e.target.value)}
+						placeholder="Add links"
+						type="text"
+						required
+					/>
+					<button type="submit">Submit</button>
+				</form>
 			</Container>
 		</>
 	);
