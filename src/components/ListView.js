@@ -6,7 +6,8 @@ const ListView = ({ data, setData }) => {
 	const [editHeroName, setEditHeroName] = useState('');
 	const [editCreator, setEditCreator] = useState('');
 	const [editLink, setEditLink] = useState('');
-	const [id , setId ]= useState('');
+	const [id, setId] = useState('');
+
 	const deleteItem = (e) => {
 		e.preventDefault();
 		let id = e.target.name;
@@ -24,56 +25,95 @@ const ListView = ({ data, setData }) => {
 		url: editLink,
 	};
 
-	
 	function startEdit(e) {
 		e.preventDefault();
 		setEditing(true);
 		let id = e.target.name;
-		setId(id)
-	};
+		setId(id);
+	}
 
-	function saveEdit(){
-		console.log(id);
+	function saveEdit() {
 		const index = data.findIndex((item) => item.id === id);
 		if (index > -1) {
 			data.splice(index, 1, editedObj);
 		}
 		setData([...data]);
+		setEditing(false);
 	}
 
 	return (
 		<>
 			<Container>
-				{editing ? (
-					<form className="form" onSubmit={saveEdit}>
-						<input
-							value={editHeroName}
-							onChange={(e) => setEditHeroName(e.target.value)}
-							placeholder="Superhero Name"
-							type="text"
-							required
-						/>
-						<input
-							value={editCreator}
-							onChange={(e) => setEditCreator(e.target.value)}
-							placeholder="Creator"
-							type="text"
-							required
-						/>
-						<input
-							value={editLink}
-							onChange={(e) => setEditLink(e.target.value)}
-							placeholder="Add link"
-							type="text"
-							required
-						/>
-						<button type="submit">Save</button>
-					</form>
-				) : null}
+				{/* Check if there is no Data then Display Message */}
 
 				{data.length <= 0 ? (
-					<h1>Please add Data</h1>
+					<h1>Please add New SuperHeros</h1>
+				) : // Else Check if you are editing
+				// and If you are editing
+
+				editing ? (
+					data.map((item) => (
+						<div key={item.id}>
+							{/* Check if Item id is same as edit Id then replace that card with the form */}
+
+							{item.id === id ? (
+								<form className="form" onSubmit={saveEdit}>
+									<input
+										value={editHeroName}
+										onChange={(e) => setEditHeroName(e.target.value)}
+										placeholder="Superhero Name"
+										type="text"
+										required
+									/>
+									<input
+										value={editCreator}
+										onChange={(e) => setEditCreator(e.target.value)}
+										placeholder="Creator"
+										type="text"
+										required
+									/>
+									<input
+										value={editLink}
+										onChange={(e) => setEditLink(e.target.value)}
+										placeholder="Add link"
+										type="text"
+										required
+									/>
+									<button type="submit">Save</button>
+								</form>
+							) : (
+								// Otherwise Build cards Normally
+
+								<div className="infoCard">
+									<div className="info">
+										<h2>{item.name}</h2>
+										<p>{item.creator}</p>
+										<p>{item.url}</p>
+									</div>
+									<div className="buttons">
+										<Button
+											variant="warning"
+											name={item.id}
+											onClick={startEdit}
+										>
+											Edit
+										</Button>
+										<Button
+											variant="danger"
+											name={item.id}
+											onClick={deleteItem}
+										>
+											Delete
+										</Button>
+									</div>
+								</div>
+							)}
+							<div></div>
+						</div>
+					))
 				) : (
+					// Else Build Cards
+
 					data.map((item) => (
 						<div key={item.id}>
 							<div className="infoCard">
@@ -83,11 +123,7 @@ const ListView = ({ data, setData }) => {
 									<p>{item.url}</p>
 								</div>
 								<div className="buttons">
-									<Button
-										variant="warning"
-										name={item.id}
-										onClick={startEdit}
-									>
+									<Button variant="warning" name={item.id} onClick={startEdit}>
 										Edit
 									</Button>
 									<Button variant="danger" name={item.id} onClick={deleteItem}>
