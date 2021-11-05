@@ -1,23 +1,22 @@
 import React from 'react';
-import {Container, Button } from 'react-bootstrap';
-import{ useState } from 'react';
+import { Container, Button } from 'react-bootstrap';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 const NewItemView = ({ setData, data }) => {
-
-	
 	const [heroName, setHeroName] = useState('');
 	const [creator, setCreator] = useState('');
 	const [link, setLink] = useState('');
 
 	function handleSubmit(event) {
-    event.preventDefault();
-	let newObj = {
-		id: Math.random().toString(36).substr(2, 9),
-		name: heroName,
-		creator: creator,
-		url: link,
-	};
-	setData([...data, newObj]);
-  }
+		event.preventDefault();
+		let newObj = {
+			id: Math.random().toString(36).substr(2, 9),
+			name: heroName,
+			creator: creator,
+			url: link,
+		};
+		setData([...data, newObj]);
+	}
 	return (
 		<>
 			<Container>
@@ -44,7 +43,18 @@ const NewItemView = ({ setData, data }) => {
 							type="url"
 							required
 						/>
+
+						<div className="formBtn">
+
 						<Button type="submit"> Submit </Button>
+
+						<Link to="/" >
+							<Button type="submit" variant="danger">
+								Cancel
+							</Button>
+						</Link>
+						</div>
+
 					</form>
 				</div>
 			</Container>
