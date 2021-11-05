@@ -1,4 +1,4 @@
-import { Button, Container } from 'react-bootstrap';
+import { Button, Container, Modal } from 'react-bootstrap';
 import { useState } from 'react';
 
 const ListView = ({ data, setData }) => {
@@ -7,16 +7,24 @@ const ListView = ({ data, setData }) => {
 	const [editCreator, setEditCreator] = useState('');
 	const [editLink, setEditLink] = useState('');
 	const [id, setId] = useState('');
+	const [modalShow, setModalShow] = useState(false);
 
-	const deleteItem = (e) => {
-		e.preventDefault();
-		let id = e.target.name;
-		const index = data.findIndex((item) => item.id === id);
-		if (index > -1) {
-			data.splice(index, 1);
-		}
-		setData([...data]);
+
+	const showModal = (e) => {
+		setModalShow(true);	
+		setId(e.target.name);
 	};
+
+	 function deleteItem(){
+		 console.log('here');
+		 console.log(id);
+			const index = data.findIndex((item) => item.id === id);
+			if (index > -1) {
+				data.splice(index, 1);
+			}
+			setData([...data]);
+			setModalShow(false);	
+		}
 
 	let editedObj = {
 		id: Math.random().toString(36).substr(2, 9),
@@ -41,9 +49,38 @@ const ListView = ({ data, setData }) => {
 		setEditing(false);
 	}
 
+	// Cancel Modal
+
+	function MyVerticallyCenteredModal(props) {
+		return (
+			<Modal
+				{...props}
+				size="md"
+				aria-labelledby="contained-modal-title-vcenter"
+				centered
+			>
+				<Modal.Header closeButton>
+					<Modal.Title id="contained-modal-title-vcenter">
+						Delete this item?
+					</Modal.Title>
+				</Modal.Header>
+				<Modal.Footer>
+					<div className="modalBtn">
+					<Button className="text-center" variant="danger" onClick={deleteItem}>Yes</Button>
+					<Button onClick={props.onHide}>No</Button>
+					</div>
+				</Modal.Footer>
+			</Modal>
+		);
+	}
+
 	return (
 		<>
 			<Container>
+				<MyVerticallyCenteredModal
+					show={modalShow}
+					onHide={() => setModalShow(false)}
+				/>
 				{/* Check if there is no Data then Display Message */}
 
 				{data.length <= 0 ? (
@@ -81,7 +118,6 @@ const ListView = ({ data, setData }) => {
 											required
 										/>
 										<Button type="submit">Save</Button>
-						
 									</form>
 								</div>
 							) : (
@@ -104,7 +140,7 @@ const ListView = ({ data, setData }) => {
 										<Button
 											variant="danger"
 											name={item.id}
-											onClick={deleteItem}
+											onClick={showModal}
 										>
 											Delete
 										</Button>
@@ -129,7 +165,7 @@ const ListView = ({ data, setData }) => {
 									<Button variant="warning" name={item.id} onClick={startEdit}>
 										Edit
 									</Button>
-									<Button variant="danger" name={item.id} onClick={deleteItem}>
+									<Button variant="danger" name={item.id} onClick={showModal}>
 										Delete
 									</Button>
 								</div>
