@@ -49,7 +49,7 @@ const ListView = ({ data, setData }) => {
 		setEditing(false);
 	}
 
-	// Cancel Modal
+	//Modal
 
 	function MyVerticallyCenteredModal(props) {
 		return (
