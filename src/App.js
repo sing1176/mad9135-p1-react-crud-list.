@@ -29,7 +29,7 @@ return (
 		<header>
 			<AppHeader />
 		</header>
-
+		<section>
 		<Switch>
 			<Route exact path="/">
 				<ListView data={data} setData={setData} />
@@ -38,6 +38,7 @@ return (
 				<NewItemView setData={setData} data={data} />
 			</Route>
 		</Switch>
+		</section>
 	</div>
 );
 }

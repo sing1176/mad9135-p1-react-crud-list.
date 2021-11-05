@@ -160,6 +160,7 @@ const ListView = ({ data, setData }) => {
 									<h2>{item.name}</h2>
 									<p>{item.creator}</p>
 									<p>{item.url}</p>
+
 								</div>
 								<div className="buttons">
 									<Button variant="warning" name={item.id} onClick={startEdit}>

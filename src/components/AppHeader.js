@@ -6,7 +6,7 @@ const AppHeader = () => {
 	return (
 		<div>
 			<Container>
-				<div className="header">
+				<div className="headerDiv">
                     <Link to="/">
 					<h2 className="title">SuperHeros</h2>
                     </Link>

@@ -24,7 +24,19 @@
 	color: rgb(209, 12, 12);
 }
 
-.header {
+header{
+	position: sticky; top: 0;
+}
+
+
+/* section{
+	display: flex;
+	background-color: #2c8f80;
+	height: 100%;
+	width: 100%;
+} */
+
+.headerDiv {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -34,7 +46,7 @@
 	align-items: center;
 	min-height: 10vh;
 	text-align: center;
-}
+}	
 
 .infoCard {
 	display: flex;

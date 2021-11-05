@@ -22,8 +22,6 @@ const NewItemView = ({ setData, data }) => {
 		setData([...data, newObj]);
 	}
 
-
-
 function MyVerticallyCenteredModal(props) {
 	return (
 		<Modal
@@ -50,9 +48,6 @@ function MyVerticallyCenteredModal(props) {
 		</Modal>
 	);
 }
-
-
-
 
 	return (
 		<>
@@ -86,7 +81,7 @@ function MyVerticallyCenteredModal(props) {
 						/>
 
 						<div className="formBtn">
-							<Button type="submit"> Submit </Button>
+							<Button type="submit"> Save </Button>
 
 							<Link to="/">
 								<Button  variant="danger">
