@@ -49,6 +49,10 @@ const ListView = ({ data, setData }) => {
 		setEditing(false);
 	}
 
+	function cancelEdit() {
+		setEditing(false);
+	}
+
 	//Modal
 
 	function MyVerticallyCenteredModal(props) {
@@ -118,6 +122,7 @@ const ListView = ({ data, setData }) => {
 											required
 										/>
 										<Button type="submit">Save</Button>
+										<Button variant="danger" onClick={cancelEdit}>Cancel</Button>
 									</form>
 								</div>
 							) : (
