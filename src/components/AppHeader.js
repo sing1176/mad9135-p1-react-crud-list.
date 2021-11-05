@@ -8,7 +8,7 @@ const AppHeader = () => {
 			<Container>
 				<div className="header">
                     <Link to="/">
-					<h2>SuperHeros</h2>
+					<h2 className="title">SuperHeros</h2>
                     </Link>
 					<Link to="/addnewitem">
 						<Button>+ New</Button>

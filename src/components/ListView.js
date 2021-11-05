@@ -57,30 +57,33 @@ const ListView = ({ data, setData }) => {
 							{/* Check if Item id is same as edit Id then replace that card with the form */}
 
 							{item.id === id ? (
-								<form className="form" onSubmit={saveEdit}>
-									<input
-										value={editHeroName}
-										onChange={(e) => setEditHeroName(e.target.value)}
-										placeholder="Superhero Name"
-										type="text"
-										required
-									/>
-									<input
-										value={editCreator}
-										onChange={(e) => setEditCreator(e.target.value)}
-										placeholder="Creator"
-										type="text"
-										required
-									/>
-									<input
-										value={editLink}
-										onChange={(e) => setEditLink(e.target.value)}
-										placeholder="Add link"
-										type="text"
-										required
-									/>
-									<button type="submit">Save</button>
-								</form>
+								<div className="editForm">
+									<form onSubmit={saveEdit}>
+										<input
+											value={editHeroName}
+											onChange={(e) => setEditHeroName(e.target.value)}
+											placeholder="Superhero Name"
+											type="text"
+											required
+										/>
+										<input
+											value={editCreator}
+											onChange={(e) => setEditCreator(e.target.value)}
+											placeholder="Creator"
+											type="text"
+											required
+										/>
+										<input
+											value={editLink}
+											onChange={(e) => setEditLink(e.target.value)}
+											placeholder="Add link"
+											type="url"
+											required
+										/>
+										<Button type="submit">Save</Button>
+						
+									</form>
+								</div>
 							) : (
 								// Otherwise Build cards Normally
 
