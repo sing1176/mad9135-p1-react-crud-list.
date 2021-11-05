@@ -99,21 +99,21 @@ const ListView = ({ data, setData }) => {
 										<input
 											value={editHeroName}
 											onChange={(e) => setEditHeroName(e.target.value)}
-											placeholder="Superhero Name"
+											placeholder={item.name}
 											type="text"
 											required
 										/>
 										<input
 											value={editCreator}
 											onChange={(e) => setEditCreator(e.target.value)}
-											placeholder="Creator"
+											placeholder={item.creator}
 											type="text"
 											required
 										/>
 										<input
 											value={editLink}
 											onChange={(e) => setEditLink(e.target.value)}
-											placeholder="Add link"
+											placeholder={item.url}
 											type="url"
 											required
 										/>
