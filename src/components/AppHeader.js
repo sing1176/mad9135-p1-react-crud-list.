@@ -8,10 +8,10 @@ const AppHeader = () => {
 			<Container>
 				<div className="headerDiv">
                     <Link to="/">
-					<h2 className="title">SuperHeros</h2>
+					<h2 className="title">SuperHero Collection</h2>
                     </Link>
 					<Link to="/addnewitem">
-						<Button>+ New</Button>
+						<Button variant="secondary">+ New</Button>
 					</Link>
 				</div>
 			</Container>

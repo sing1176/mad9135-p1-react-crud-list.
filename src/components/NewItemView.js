@@ -81,12 +81,10 @@ function MyVerticallyCenteredModal(props) {
 						/>
 
 						<div className="formBtn">
-							<Button type="submit"> Save </Button>
+							<Button variant="dark" type="submit"> Save </Button>
 
 							<Link to="/">
-								<Button  variant="danger">
-									Cancel
-								</Button>
+								<Button variant="secondary">Cancel</Button>
 							</Link>
 						</div>
 					</form>

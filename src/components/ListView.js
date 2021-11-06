@@ -121,8 +121,12 @@ const ListView = ({ data, setData }) => {
 											type="url"
 											required
 										/>
-										<Button type="submit">Save</Button>
-										<Button variant="danger" onClick={cancelEdit}>Cancel</Button>
+										<Button variant="dark" type="submit">
+											Save
+										</Button>
+										<Button variant="secondary" onClick={cancelEdit}>
+											Cancel
+										</Button>
 									</form>
 								</div>
 							) : (
@@ -135,15 +139,11 @@ const ListView = ({ data, setData }) => {
 										<p>{item.url}</p>
 									</div>
 									<div className="buttons">
-										<Button
-											variant="warning"
-											name={item.id}
-											onClick={startEdit}
-										>
-											Edit
+										<Button variant="dark" name={item.id} onClick={startEdit}>
+											<i class="bi bi-pencil-square"></i>
 										</Button>
 										<Button
-											variant="danger"
+											variant="secondary"
 											name={item.id}
 											onClick={showModal}
 										>
@@ -165,13 +165,17 @@ const ListView = ({ data, setData }) => {
 									<h2>{item.name}</h2>
 									<p>{item.creator}</p>
 									<p>{item.url}</p>
-
 								</div>
 								<div className="buttons">
-									<Button variant="warning" name={item.id} onClick={startEdit}>
+									<Button variant="dark" name={item.id} onClick={startEdit}>
 										Edit
+
 									</Button>
-									<Button variant="danger" name={item.id} onClick={showModal}>
+									<Button
+										variant="secondary"
+										name={item.id}
+										onClick={showModal}
+									>
 										Delete
 									</Button>
 								</div>
